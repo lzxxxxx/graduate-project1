@@ -1,0 +1,17 @@
+
+@font-face {font-family: "iconfont2";
+  src: url('iconfont2.eot?t=1491638375298'); /* IE9*/
+  src: url('iconfont2.eot?t=1491638375298#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont2.woff?t=1491638375298') format('woff'), /* chrome, firefox */
+  url('iconfont2.ttf?t=1491638375298') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont2.svg?t=1491638375298#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont2 {
+  font-family:"iconfont2" !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-day:before { content: "\e614"; }

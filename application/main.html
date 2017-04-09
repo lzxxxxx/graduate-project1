@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="keywords" content="graduation-project,resume">
+    <meta name="author" content="lzxxx">
+    <meta name="description" content="a dynamic resume making station">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>动态简历制作平台</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="./iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./iconfont1.css">
+    <link rel="stylesheet" type="text/css" href="./iconfont2.css">
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </head>
+  <body>
+    <header class="headpage-section">
+      <h1>完美的动态简历制作平台</h1>
+      <div class="select-bar">
+        <a class="select-bar_makeresume" href="#makeresume">
+          制作简历
+        </a>
+        <a class="select-bar_contactus" href="#contactus">
+          联系我们
+        </a>
+      </div>
+    </header>
+    <nav class="navbar">
+      <!-- 切换主题风格 -->
+      <div class="select-bar">
+        <a class="select-bar_theme1">
+          a主题
+        </a>
+        <a class="select-bar_theme2">
+          b主题
+        </a>
+        <a class="select-bar_theme3">
+          c主题
+        </a>
+        <a class="select-bar_themed">
+          d主题
+        </a>
+      </div>
+    </nav>
+    <main class="main-section" id="makeresume">
+      <div class="resume-section">
+        <div class="resume-section_header">
+          <section class="upload-image">
+            <img src="imgs/upload_1.svg" alt="uploadimage">
+            <div class="upload-image_text">
+              上传照片
+            </div>
+            <input class="upload-image_btn" type="file" accept="image/*" size="1">
+          </section>
+          <section class="self-introduce">
+            <span>
+              <div class="self-introduce_name iconfont1 icon-name">
+                女
+              </div>
+              <div class="self-introduce_phone iconfont icon-iphone">
+                15075648575
+              </div>
+              <div class="self-introduce_mail iconfont icon-mail">
+                625705811@qq.com
+              </div>
+              <div class="self-introduce_birth iconfont2 icon-day">
+                21岁
+              </div>
+            </span>
+            <span class="self-introduce_job">
+              <div class="self-introduce_job__personname">
+                刘咨序
+              </div>
+              <div class="self-introduce_job__jobname">
+                前端开发工程师
+              </div>
+            </span>
+          </section>
+        </div>
+        <!--
+        item-inner:教育背景 方块标题
+        item-inner_header:一个标题
+        item-inner_text:一个介绍 -->
+        <section class="resume-section_edubackground">
+          <div class="item-inner">
+            <div class="item-inner_header">
+              <span>2013.09 - 2017.06</span>
+              <span> Institute of Disaster Prevention Science and Technology</span>
+              <span>网络工程</span>
+            </div>
+            <div class="item-inner_text">
+
+            </div>
+          </div>
+        </section>
+        <section class="resume-section_internexperience">
+          
+        </section>
+      </div>
+    </main>
+    <footer class="footer-section" id="contactus">
+      <a href="#" class="iconfont icon-github"></a>
+      <a href="#" class="iconfont icon-mail"></a>
+      <a href="#" class="iconfont icon-wechat"></a>
+      <a href="#" class="iconfont icon-qq"></a>
+      <a href="#" class="iconfont icon-iphone"></a>
+    </footer>
+  </body>
+</html>
