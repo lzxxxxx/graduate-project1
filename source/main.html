@@ -9,15 +9,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>动态简历制作平台</title>
     <link rel="stylesheet" type="text/css" href="main.css">
-    <link rel="stylesheet" type="text/css" href="./iconfont.css">
-    <link rel="stylesheet" type="text/css" href="./iconfont1.css">
-    <link rel="stylesheet" type="text/css" href="./iconfont2.css">
+    <link rel="stylesheet" type="text/css" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="./iconfont/iconfont1.css">
+    <link rel="stylesheet" type="text/css" href="./iconfont/iconfont2.css">
+    <script type="text/javascript" src="template.js" ></script>
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="main.js"></script>
   </head>
   <body>
     <header class="headpage-section">
       <h1>完美的动态简历制作平台</h1>
+      <div class="headpage-section_h1"></div>
       <div class="select-bar">
         <a class="select-bar_makeresume" href="#makeresume">
           制作简历
@@ -30,18 +31,16 @@
     <nav class="navbar">
       <!-- 切换主题风格 -->
       <div class="select-bar">
-        <a class="select-bar_theme1">
-          a主题
-        </a>
-        <a class="select-bar_theme2">
-          b主题
-        </a>
-        <a class="select-bar_theme3">
-          c主题
-        </a>
-        <a class="select-bar_themed">
-          d主题
-        </a>
+        <input type="radio" id="theme1" name="themechoose" checked>
+        <label class="select-bar_theme1" for="theme1">经典灰色</label>
+        <input type="radio" id="theme2" name="themechoose">
+        <label class="select-bar_theme2" for="theme2">mi橙色</label>
+        <input type="radio" id="theme3" name="themechoose">
+        <label class="select-bar_theme3" for="theme3">印度红色</label>
+        <input type="radio" id="theme4" name="themechoose">
+        <label class="select-bar_theme4" for="theme4">橄榄绿色</label>
+        <input type="radio" id="theme5" name="themechoose">
+        <label class="select-bar_theme5" for="theme5">浅海洋绿</label>
       </div>
     </nav>
     <main class="main-section" id="makeresume">
@@ -79,57 +78,27 @@
             </span>
           </section>
         </div>
-        <section class="resume-section_edubackground">
-          <div class="item-inner">
-            <div class="item-inner_decoration">
-              教育背景
-            </div>
-            <div class="item-inner_header">
-              <span>2013.09 - 2017.06</span>
-              <span> Institute of Disaster Prevention Science and Technology</span>
-              <span>网络工程</span>
-            </div>
-            <div class="item-inner_text">
-              主修课程：网络工程，计算机网络，C语言，数据结构等
-            </div>
-          </div>
-        </section>
-        <section class="resume-section_internexperience">
-          <div class="item-inner">
-            <div class="item-inner_decoration">
-              工作经历
-            </div>
-            <div class="item-inner_header">
-              <span>~</span>
-              <span>云联万通</span>
-              <span>前端开发实习生</span>
-            </div>
-            <div class="item-inner_text">
-              1.  团队管理。分配工作任务，与其他部门对接，制作报表；<br>
-              2.  APP数据跟踪分析（新用户注册量、活跃用户量、日均UV、跳转情况、跳出率），进行页面内容优化工作；<br>
-              3.  微信内容运营、粉丝维护；<br>
-              4.  与设计、技术、营销、客服配合，展开线上活动策划及管理，如大转盘抽奖、话题互动抽奖、晒照赢免单、GIF截图抢代金券活动、与<br>
-              4.  Uber车主端合作互推等；<br>
-              5.  活动预算申报、活动效果预估、活动效果监控；<br>
-              6.  公司品牌宣传稿件撰写，对外推广产品文案撰写。<br>
-            </div>
-          </div>
-        </section>
-        <section class="resume-section_schoolexperience">
-          <div class="item-inner">
-            <div class="item-inner_decoration">
-              校内实践
-            </div>
-            <div class="item-inner_header">
-              <span>~</span>
-              <span>青年志愿者协会</span>
-              <span>外联部部长</span>
-            </div>
-            <div class="item-inner_text">
-              1.balbablalblablalbalblala ...
-            </div>
-          </div>
-        </section>
+      <div class="resume-section_main">
+        <script type="text/html" id="show">
+          {{each list as value i}}
+            <section class={{value.sectionClass}}>
+              <div class="item-inner">
+                <div class="item-inner_decoration">
+                  {{value.decorationText}}
+                </div>
+                <div class="item-inner_header">
+                  <span>{{value.left}}</span>
+                  <span>{{value.middle}}</span>
+                  <span>{{value.right}}</span>
+                </div>
+                <div class="item-inner_text">
+                  {{value.itemText}}
+                </div>
+              </div>
+            </section>
+          {{/each}}
+        </script>
+      </div>
         <section class="resume-section_selfevaluation">
           <div class="item-inner">
             <div class="item-inner_decoration">
@@ -149,5 +118,6 @@
       <a href="#" class="iconfont icon-qq"></a>
       <a href="#" class="iconfont icon-iphone"></a>
     </footer>
+    <script type="text/javascript" src="main.js"></script>
   </body>
 </html>

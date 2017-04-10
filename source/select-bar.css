@@ -1,0 +1,30 @@
+.select-bar {
+ letter-spacing: 50px;
+}
+.select-bar [class *= select-bar_] {
+  text-decoration: none;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  width: 200px;
+  background-color: white;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #615d5d;
+  opacity: 0.85;
+  transition: all .5s;
+}
+.select-bar [class *= select-bar_]:hover {
+  background-color: rgba(32,51,15,0.8);
+  opacity: 0.85;
+  color: white;
+}
+.select-bar input[type=radio]:checked+[class *= select-bar_]{
+  background-color: rgb(32,51,15);
+  color: white;
+}
+.select-bar input[type=radio] {
+  display: none;
+}

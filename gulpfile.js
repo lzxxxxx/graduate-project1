@@ -6,13 +6,15 @@ gulp.task('default', ['babeljs'] ,function() {
 });
 
 gulp.task('babeljs',['copyelse'],() => {
-  gulp.src('./source/main.js',{base: './source'})
+  gulp.src('./application/main.js')
     .pipe(babel())
     .pipe(gulp.dest('./application'));
 });
 gulp.task('copyelse', () => {
-  gulp.src('./source/!(*.js)')
+  gulp.src('./source/*')
     .pipe(gulp.dest('./application'));
   gulp.src('./source/imgs/*')
     .pipe(gulp.dest('./application/imgs'));
+  gulp.src('./source/iconfont/*')
+    .pipe(gulp.dest('./application/iconfont'));
 });

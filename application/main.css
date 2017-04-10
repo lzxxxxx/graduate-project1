@@ -1,9 +1,30 @@
+@import './select-bar.css';
+@import './item-inner.css';
+
+:root {
+  /*这里不同的主题的配置变量，在js里切换主题*/
+  /*默认灰色*/
+  --color-theme1:rgb(200,200,200);
+  /*mi橙色*/
+  --color-theme2:rgb(236,102,66);
+  /*印度红色*/
+  --color-theme3:rgb(205,92,92);
+  /*橄榄绿色*/
+  --color-theme4:rgb(85,107,47);
+  /*浅海洋绿*/
+  --color-theme5:rgb(0,128,128);
+
+  --color-themecur:var(--color-theme1);
+}
 html,body {
   margin: 0;
   padding: 0;
-  font-family: '微软雅黑';
+  font-family: '微软雅黑',"Microsoft Yahei",sans-serif;
   text-align: center;
-  background-color: #ddd;
+  background-color: rgba(64,119,23,0.26);
+}
+* {
+  transition: all .3s linear;
 }
 .navbar {
   z-index: 1;
@@ -35,31 +56,8 @@ html,body {
   margin-top: 18vh;
   margin-bottom: 125px;
 }
-.select-bar {
- letter-spacing: 50px;
-}
-.select-bar [class *= select-bar_] {
-  text-decoration: none;
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  width: 200px;
-  background-color: white;
-  border: 1px solid #aaa;
-  border-radius: 3px;
-  letter-spacing: 1px;
-  font-size: 15px;
-  color: #615d5d;
-  opacity: 0.85;
-  transition: all .5s;
-}
-.select-bar [class *= select-bar_]:hover {
-  background-color: #252427;
-  opacity: 0.85;
-  color: white;
-}
 .main-section {
-  height: 130vh;
+  /*height: 130vh;*/
   width: 60vw;
   margin: 0 auto;
   box-shadow: 0px 8px 8px 5px rgba(0, 0, 0, 0.2);
@@ -74,7 +72,7 @@ html,body {
 .resume-section .resume-section_header {
   overflow: hidden;
 }
-.resume-section .resume-section_edubackground {
+.resume-section section[class *= resume-section_] {
   margin: 50px;
 }
 .upload-image {
@@ -124,7 +122,7 @@ html,body {
   margin: 30px;
   padding:20px;
   line-height: 2em;
-  background-color: #999;
+  background-color: var(--color-themecur);
 }
 .self-introduce .self-introduce_job .self-introduce_job__personname{
   margin: 15px 0;
@@ -138,7 +136,8 @@ html,body {
 }
 .footer-section a {
   flex: 1;
-  background-color: #615d5d;
+  background-color: rgb(32,51,15);
+  box-shadow: -10px 0px 10px -5px rgba(0,0,0,0.8);
   line-height:200px;
   color:white;
   text-decoration: none;
@@ -158,24 +157,8 @@ html,body {
   transition: all linear .3s;
 }
 .footer-section a:hover {
-  background-color: #3e3c3c;
-  box-shadow: 0px 5px 5px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: -10px 0px 35px -5px rgba(0,0,0,0.8);
 }
 .footer-section a:hover::after {
   width: 150px;
-}
-
-
-.item-inner {
-  border-left: 2px solid #999;
-  border-top: 1px solid #999;
-}
-.item-inner .item-inner_header {
-  display: flex;
-}
-.item-inner .item-inner_header span{
-  flex: 1;
-}
-.item-inner .item-inner_header span:nth-child(2) {
-  
 }
