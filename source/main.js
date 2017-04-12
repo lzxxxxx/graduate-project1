@@ -1,5 +1,5 @@
 window.onload = function (){
-
+// 顶部背景滚动部分
   document.addEventListener('scroll',(evt) => {
     var callbk = function (){
       var d = document.body.scrollTop*100/document.body.scrollHeight;
@@ -9,24 +9,30 @@ window.onload = function (){
     requestAnimationFrame(callbk);
   });
 
-  var uploadText = $('.upload-image .upload-image_text')[0];
-  var uploadBtn = $('.upload-image .upload-image_btn')[0];
-  var uploadImg = $('.upload-image img')[0];
-  uploadText.addEventListener('click',(evt) => {
-    uploadBtn.click();
-  });
-  uploadBtn.addEventListener('change',(evt) => {
-    var files = uploadBtn.files;
-    if(files){
-      var reader = new FileReader();
-      reader.readAsDataURL(files[0]);
-      reader.onload = function(evt){
-        uploadImg.setAttribute('width','150px');
-        uploadImg.setAttribute('height','150px');
-        uploadImg.src = evt.target.result;
-      };
-    }
-  });
+  function DATA1item (...args){
+    [
+      this.sectionClass,
+      this.decorationText,
+      this.left,
+      this.middle,
+      this.right,
+      this.itemText
+    ] = args;
+    return this;
+  }
+  var data2 = {
+    sex:"女",
+    phone:"15075648575",
+    mail:"625705811@qq.com",
+    age:"21",
+    name:"刘咨序",
+    job:"前端开发实习生",
+    editing:"false"
+  };
+  var html2 = template('resumesec',data2);
+  $('.main-section')[0].innerHTML = html2;
+  // 注意一定要先html2渲染出来，因为这样才有html1想要渲染的元素
+
 
   var data1 = {
     list: [
@@ -53,16 +59,90 @@ window.onload = function (){
         right: '外联部部长',
         itemText:'1.balbablalblablalbalblala ...'
       }
-    ]
+    ],
+    editing:"false"
   }
   var html1 = template('show',data1);
   $('.resume-section_main')[0].innerHTML = html1;
 
+
+// 更换主题 必须在前两个模板渲染完之后，否则操作不到元素
   function changeTheme (number) {
     $(':root').css('--color-themecur','var(--color-theme'+number+')');
   }
   var selectbtns = $('[class *= select-bar_theme]');
   Array.from(selectbtns).forEach((cur,idx=0,arr) => {
     cur.addEventListener('click',changeTheme.bind(null,idx+1));
+  });
+
+
+// 上传图片
+  var uploadText = $('.upload-image .upload-image_text')[0];
+  var uploadBtn = $('.upload-image .upload-image_btn')[0];
+  var uploadImg = $('.upload-image img')[0];
+  uploadText.addEventListener('click',(evt) => {
+    uploadBtn.click();
+  });
+  uploadBtn.addEventListener('change',(evt) => {
+    var files = uploadBtn.files;
+    if(files){
+      var reader = new FileReader();
+      reader.readAsDataURL(files[0]);
+      reader.onload = function(evt){
+        uploadImg.setAttribute('width','150px');
+        uploadImg.setAttribute('height','150px');
+        uploadImg.src = evt.target.result;
+      };
+    }
+  });
+  var contentArr = $('[contenteditable]');
+  Object.defineProperty(data2,"editing",{
+    set:function(boovalue){
+      contentArr.prop('contenteditable',boovalue);
+    },
+    get:function(){
+      return contentArr.prop('contenteditable');
+    }
+  });
+  Object.defineProperty(data1,"editing",{
+    set:function(boovalue){
+      contentArr.prop('contenteditable',boovalue);
+    },
+    get:function(){
+      return contentArr.prop('contenteditable');
+    }
+  });
+  contentArr.on('blur',function(evt){
+    var dataset = evt.target.dataset;
+    if(dataset.idx){
+      data1.list[dataset.idx][dataset.str] = evt.target.innerHTML.trim();
+    }
+    else {
+      data2[dataset.str] = evt.target.innerHTML.trim();
+    }
+  });
+
+  var editBtn = $('#edit');
+  var plusbigBtn = $('.plus-big');
+  editBtn.change(function(evt){
+    if($(this).prop('checked')){
+        data2.editing = "true";
+        data1.editing = "true";
+        plusbigBtn.removeClass('hidden');
+      }
+      else {
+        data2.editing = "false";
+        data1.editing = "false";
+        plusbigBtn.addClass('hidden');
+      }
+  });
+
+  plusbigBtn.on('click',function(evt){
+    data1.list.push(new DATA1item(
+      'resume-section_new','新增模块','时间','组织','职位','展开讲讲'
+    ));
+    let html1 = template('show',data1);
+    $('.resume-section_main')[0].innerHTML = html1;
+    contentArr = $('[contenteditable]');
   });
 };

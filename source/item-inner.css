@@ -36,6 +36,8 @@
 }
 .item-inner .item-inner_header span{
   flex: 1;
+  margin: 0px 5px;
+  padding: 5px;
 }
 .item-inner .item-inner_header span:nth-child(2) {
   flex: 2;

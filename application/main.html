@@ -16,6 +16,27 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body>
+    <!-- 模板show -->
+    <script type="text/html" id="show">
+      {{each list as value i}}
+        <section class={{value.sectionClass}}>
+          <div class="item-inner">
+            <div class="item-inner_decoration" contenteditable={{editing}} data-str="decorationText" data-idx={{i}}>
+              {{value.decorationText}}
+            </div>
+            <div class="item-inner_header">
+              <span contenteditable={{editing}} data-str="left" data-idx={{i}}>{{value.left}}</span>
+              <span contenteditable={{editing}} data-str="middle" data-idx={{i}}>{{value.middle}}</span>
+              <span contenteditable={{editing}} data-str="right" data-idx={{i}}>{{value.right}}</span>
+            </div>
+            <div class="item-inner_text" contenteditable={{editing}} data-str="itemText" data-idx={{i}}>
+              {{value.itemText}}
+            </div>
+          </div>
+        </section>
+      {{/each}}
+    </script>
+
     <header class="headpage-section">
       <h1>完美的动态简历制作平台</h1>
       <div class="headpage-section_h1"></div>
@@ -28,8 +49,9 @@
         </a>
       </div>
     </header>
+
     <nav class="navbar">
-      <!-- 切换主题风格 -->
+      <!-- 悬浮 切换主题风格 -->
       <div class="select-bar">
         <input type="radio" id="theme1" name="themechoose" checked>
         <label class="select-bar_theme1" for="theme1">经典灰色</label>
@@ -41,9 +63,13 @@
         <label class="select-bar_theme4" for="theme4">橄榄绿色</label>
         <input type="radio" id="theme5" name="themechoose">
         <label class="select-bar_theme5" for="theme5">浅海洋绿</label>
+        <input type="checkbox" id="edit" name="edit" value="edit">
+        <label for="edit" checked=false>编辑</label>
       </div>
     </nav>
+
     <main class="main-section" id="makeresume">
+      <script type="text/html" id="resumesec">
       <div class="resume-section">
         <div class="resume-section_header">
           <section class="upload-image">
@@ -55,62 +81,49 @@
           </section>
           <section class="self-introduce">
             <span>
-              <div class="self-introduce_name iconfont1 icon-name">
-                女
+              <div class="self-introduce_name iconfont1 icon-name" contenteditable={{editing}} data-str="sex">
+                {{sex}}
               </div>
-              <div class="self-introduce_phone iconfont icon-iphone">
-                15075648575
+              <div class="self-introduce_phone iconfont icon-iphone" contenteditable={{editing}} data-str="phone">
+                {{phone}}
               </div>
-              <div class="self-introduce_mail iconfont icon-mail">
-                625705811@qq.com
+              <div class="self-introduce_mail iconfont icon-mail" contenteditable={{editing}} data-str="mail">
+                {{mail}}
               </div>
-              <div class="self-introduce_birth iconfont2 icon-day">
-                21岁
+              <div class="self-introduce_birth iconfont2 icon-day" contenteditable={{editing}} data-str="age">
+                {{age}}
               </div>
             </span>
             <span class="self-introduce_job">
-              <div class="self-introduce_job__personname">
-                刘咨序
+              <div class="self-introduce_job__personname" contenteditable={{editing}} data-str="name">
+                {{name}}
               </div>
-              <div class="self-introduce_job__jobname">
-                前端开发工程师
+              <div class="self-introduce_job__jobname" contenteditable={{editing}} data-str="job">
+                {{job}}
               </div>
             </span>
           </section>
         </div>
       <div class="resume-section_main">
-        <script type="text/html" id="show">
-          {{each list as value i}}
-            <section class={{value.sectionClass}}>
-              <div class="item-inner">
-                <div class="item-inner_decoration">
-                  {{value.decorationText}}
-                </div>
-                <div class="item-inner_header">
-                  <span>{{value.left}}</span>
-                  <span>{{value.middle}}</span>
-                  <span>{{value.right}}</span>
-                </div>
-                <div class="item-inner_text">
-                  {{value.itemText}}
-                </div>
-              </div>
-            </section>
-          {{/each}}
-        </script>
+        {{include 'show' editing}}
       </div>
         <section class="resume-section_selfevaluation">
           <div class="item-inner">
-            <div class="item-inner_decoration">
+            <div class="item-inner_decoration" contenteditable={{editing}}>
               自我评价
             </div>
-            <div class="item-inner_text">
+            <div class="item-inner_text" contenteditable={{editing}}>
               1.傻里傻气。。。。。
             </div>
           </div>
         </section>
+        <div class="plus-big hidden">
+          +
+        </div>
       </div>
+    </script>
     </main>
+
     <footer class="footer-section" id="contactus">
       <a href="#" class="iconfont icon-github"></a>
       <a href="#" class="iconfont icon-mail"></a>
@@ -118,6 +131,7 @@
       <a href="#" class="iconfont icon-qq"></a>
       <a href="#" class="iconfont icon-iphone"></a>
     </footer>
+
     <script type="text/javascript" src="main.js"></script>
   </body>
 </html>
