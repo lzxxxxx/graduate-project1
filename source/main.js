@@ -1,12 +1,24 @@
 window.onload = function (){
 // 顶部背景滚动部分
-  document.addEventListener('scroll',(evt) => {
-    var callbk = function (){
-      var d = document.body.scrollTop*100/document.body.scrollHeight;
-      var headpage = $('.headpage-section');
+
+  // console.log(evt.target);
+  var headpage = $('.headpage-section');
+  var scrollheight = document.body.scrollHeight;
+  // document.addEventListener('scroll',(evt) => {
+  //   var callbk = function (){
+  //     var d = document.body.scrollTop*100/scrollheight;
+  //     headpage.css('background-position','0 '+(d+50)+'%');
+  //   };
+  //   requestAnimationFrame(callbk);
+  // });
+
+var timer;
+  document.addEventListener('scroll',function(evt){
+    if(timer) clearTimeout(timer);
+    timer = setTimeout(function(){
+      var d = document.body.scrollTop*100/scrollheight;
       headpage.css('background-position','0 '+(d+50)+'%');
-    };
-    requestAnimationFrame(callbk);
+    },150);
   });
 
   function DATA1item (...args){
